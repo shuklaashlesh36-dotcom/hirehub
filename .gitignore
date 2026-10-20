@@ -1,0 +1,10 @@
+target/
+src/main/resources/db.properties
+
+bin/
+
+
+.idea/workspace.xml
+.idea/shelf/
+*.iml
+

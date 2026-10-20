@@ -1,0 +1,796 @@
+/* ==========================================================================
+   HireHub Comprehensive Design System: Dark Mode & Light Mode Theme Support
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Theme Variables
+   -------------------------------------------------------------------------- */
+:root,
+[data-theme="dark"] {
+    /* Color Palette - Dark Mode */
+    --bg-primary: #0b0f19;
+    --bg-secondary: #111827;
+    --bg-card: rgba(17, 24, 39, 0.85);
+    --bg-card-solid: #111827;
+    --bg-card-subtle: rgba(255, 255, 255, 0.04);
+    --bg-input: rgba(15, 23, 42, 0.7);
+    --bg-navbar: rgba(11, 15, 25, 0.88);
+    --bg-dropzone: rgba(17, 24, 39, 0.5);
+    --bg-tag: rgba(255, 255, 255, 0.06);
+
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-subtle: rgba(255, 255, 255, 0.05);
+    --border-glow: rgba(99, 102, 241, 0.35);
+
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+
+    --accent-primary: #6366f1;
+    --accent-hover: #4f46e5;
+    --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+    --accent-glow: 0 0 24px rgba(99, 102, 241, 0.35);
+
+    --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.35);
+    --shadow-modal: 0 20px 40px rgba(0, 0, 0, 0.6);
+    --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+    /* Status Colors */
+    --success-bg: rgba(16, 185, 129, 0.15);
+    --success-border: rgba(16, 185, 129, 0.3);
+    --success-text: #34d399;
+
+    --error-bg: rgba(239, 68, 68, 0.15);
+    --error-border: rgba(239, 68, 68, 0.3);
+    --error-text: #f87171;
+
+    --warning-bg: rgba(245, 158, 11, 0.15);
+    --warning-border: rgba(245, 158, 11, 0.3);
+    --warning-text: #fbbf24;
+
+    --info-bg: rgba(99, 102, 241, 0.15);
+    --info-border: rgba(99, 102, 241, 0.3);
+    --info-text: #a5b4fc;
+
+    /* Buttons */
+    --bg-btn-secondary: rgba(255, 255, 255, 0.08);
+    --bg-btn-secondary-hover: rgba(255, 255, 255, 0.14);
+    --text-btn-secondary: #f9fafb;
+
+    /* Tables */
+    --bg-table-header: rgba(255, 255, 255, 0.04);
+    --bg-table-row-hover: rgba(255, 255, 255, 0.02);
+    --border-table: rgba(255, 255, 255, 0.05);
+
+    /* Background Aesthetic */
+    --page-gradient: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+                     radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.1) 0px, transparent 50%);
+
+    /* Theme Toggle */
+    --toggle-bg: rgba(255, 255, 255, 0.08);
+    --toggle-border: rgba(255, 255, 255, 0.15);
+    --toggle-color: #fbbf24;
+
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+[data-theme="light"] {
+    /* Color Palette - Light Mode */
+    --bg-primary: #f5f7fb;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --bg-card-solid: #ffffff;
+    --bg-card-subtle: #f8fafc;
+    --bg-input: #ffffff;
+    --bg-navbar: rgba(255, 255, 255, 0.92);
+    --bg-dropzone: #f8fafc;
+    --bg-tag: #eef2ff;
+
+    --border-color: #dbe2ee;
+    --border-subtle: #e2e8f0;
+    --border-glow: rgba(79, 70, 229, 0.25);
+
+    --text-primary: #172033;
+    --text-secondary: #526078;
+    --text-muted: #64748b;
+
+    --accent-primary: #4f46e5;
+    --accent-hover: #4338ca;
+    --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+    --accent-glow: 0 0 24px rgba(79, 70, 229, 0.2);
+
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+    --shadow-modal: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+    --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+    /* Status Colors - Light Mode (High Contrast) */
+    --success-bg: #ecfdf5;
+    --success-border: #a7f3d0;
+    --success-text: #059669;
+
+    --error-bg: #fef2f2;
+    --error-border: #fecaca;
+    --error-text: #dc2626;
+
+    --warning-bg: #fffbeb;
+    --warning-border: #fde68a;
+    --warning-text: #d97706;
+
+    --info-bg: #eff6ff;
+    --info-border: #bfdbfe;
+    --info-text: #2563eb;
+
+    /* Buttons - Light Mode */
+    --bg-btn-secondary: #f1f5f9;
+    --bg-btn-secondary-hover: #e2e8f0;
+    --text-btn-secondary: #172033;
+
+    /* Tables - Light Mode */
+    --bg-table-header: #f8fafc;
+    --bg-table-row-hover: #f1f5f9;
+    --border-table: #e2e8f0;
+
+    /* Background Aesthetic - Light Mode */
+    --page-gradient: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.06) 0px, transparent 50%),
+                     radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.04) 0px, transparent 50%);
+
+    /* Theme Toggle - Light Mode */
+    --toggle-bg: #f1f5f9;
+    --toggle-border: #cbd5e1;
+    --toggle-color: #4b5563;
+}
+
+/* --------------------------------------------------------------------------
+   Base Styles & Reset
+   -------------------------------------------------------------------------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-primary);
+    background-image: var(--page-gradient);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    font-family: var(--font-stack);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Smooth theme transitions on interactive elements */
+.navbar,
+.glass-panel,
+.stat-card,
+.job-card,
+.app-card,
+.data-table-wrapper,
+.form-control,
+.btn,
+.theme-toggle,
+.badge,
+.user-badge {
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Navigation Bar
+   -------------------------------------------------------------------------- */
+.navbar {
+    background: var(--bg-navbar);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.85rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 1.35rem;
+    letter-spacing: -0.025em;
+}
+
+.brand-badge {
+    background: var(--accent-gradient);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Theme Toggle Button
+   -------------------------------------------------------------------------- */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.42rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--toggle-bg);
+    border: 1px solid var(--toggle-border);
+    color: var(--text-primary);
+    line-height: 1;
+    text-decoration: none;
+    user-select: none;
+}
+
+.theme-toggle:hover {
+    background: var(--bg-btn-secondary-hover);
+    border-color: var(--border-glow);
+    transform: translateY(-1px);
+}
+
+.theme-toggle:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--border-glow);
+}
+
+.theme-toggle-icon {
+    font-size: 0.95rem;
+    display: inline-block;
+    line-height: 1;
+}
+
+.theme-toggle-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   User Badge & Nav Avatar
+   -------------------------------------------------------------------------- */
+.user-badge {
+    background: var(--bg-card-subtle);
+    border: 1px solid var(--border-color);
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-height: 58px;
+    flex-shrink: 0;
+}
+
+.user-badge strong {
+    color: var(--text-primary);
+}
+
+/* Navbar profile avatar strict sizing */
+.avatar-nav,
+.navbar img.avatar-nav,
+.navbar .user-badge img {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
+    flex: 0 0 32px !important;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    display: block;
+}
+
+/* Profile page large avatar */
+.avatar-lg {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-primary);
+    box-shadow: var(--shadow-card);
+    background: var(--bg-card-solid);
+}
+
+.avatar-upload-box {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem;
+    background: var(--bg-card-subtle);
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+}
+
+.profile-field-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.profile-field-value {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    word-break: break-word;
+}
+
+/* --------------------------------------------------------------------------
+   Page Layout & Containers
+   -------------------------------------------------------------------------- */
+.container {
+    flex: 1;
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    width: 100%;
+}
+
+.auth-container {
+    max-width: 520px;
+    margin: 3.5rem auto;
+}
+
+/* --------------------------------------------------------------------------
+   Cards & Glass Panels
+   -------------------------------------------------------------------------- */
+.glass-panel {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+    box-shadow: var(--shadow-card);
+}
+
+.glass-panel:hover {
+    border-color: var(--border-glow);
+}
+
+.header-panel {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.header-panel h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.03em;
+    background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .header-panel h1 {
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: var(--text-primary);
+}
+
+.header-panel p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   Alerts
+   -------------------------------------------------------------------------- */
+.alert {
+    padding: 0.85rem 1.15rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.alert-error {
+    background: var(--error-bg);
+    border: 1px solid var(--error-border);
+    color: var(--error-text);
+}
+
+.alert-success {
+    background: var(--success-bg);
+    border: 1px solid var(--success-border);
+    color: var(--success-text);
+}
+
+.alert-info {
+    background: var(--info-bg);
+    border: 1px solid var(--info-border);
+    color: var(--info-text);
+}
+
+.alert-warning {
+    background: var(--warning-bg);
+    border: 1px solid var(--warning-border);
+    color: var(--warning-text);
+}
+
+/* --------------------------------------------------------------------------
+   Forms & Inputs
+   -------------------------------------------------------------------------- */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.form-control {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--border-glow);
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    background: var(--bg-card-subtle);
+    color: var(--text-muted);
+    cursor: not-allowed;
+    opacity: 0.75;
+}
+
+/* Select options */
+select.form-control option {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: none;
+    line-height: 1.2;
+}
+
+.btn-primary {
+    background: var(--accent-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+}
+
+.btn-secondary {
+    background: var(--bg-btn-secondary);
+    color: var(--text-btn-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-btn-secondary-hover);
+    color: var(--text-primary);
+    border-color: var(--border-glow);
+}
+
+.btn-danger {
+    background: var(--error-bg);
+    color: var(--error-text);
+    border: 1px solid var(--error-border);
+}
+
+.btn-danger:hover {
+    background: rgba(239, 68, 68, 0.25);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-sm {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.82rem;
+    border-radius: 6px;
+}
+
+.btn-success {
+    background: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid var(--success-border);
+}
+
+.btn-success:hover {
+    background: rgba(16, 185, 129, 0.25);
+}
+
+.btn-warning {
+    background: var(--warning-bg);
+    color: var(--warning-text);
+    border: 1px solid var(--warning-border);
+}
+
+.btn-warning:hover {
+    background: rgba(245, 158, 11, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   Radio Cards (Role Selection)
+   -------------------------------------------------------------------------- */
+.role-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.role-card {
+    border: 2px solid var(--border-color);
+    background: var(--bg-card-subtle);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.role-card:hover {
+    border-color: var(--border-glow);
+}
+
+.role-card input[type="radio"] {
+    display: none;
+}
+
+.role-card.selected {
+    border-color: var(--accent-primary);
+    background: rgba(99, 102, 241, 0.1);
+}
+
+[data-theme="light"] .role-card.selected {
+    background: #eef2ff;
+}
+
+.role-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.role-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Dashboards & Stat Cards
+   -------------------------------------------------------------------------- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: var(--shadow-card);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Data Tables
+   -------------------------------------------------------------------------- */
+.data-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.92rem;
+}
+
+.data-table th {
+    background: var(--bg-table-header);
+    color: var(--text-secondary);
+    padding: 0.85rem 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-table);
+    vertical-align: middle;
+    color: var(--text-primary);
+}
+
+.data-table tr:hover td {
+    background: var(--bg-table-row-hover);
+}
+
+/* --------------------------------------------------------------------------
+   Badges
+   -------------------------------------------------------------------------- */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.badge-approved,
+.badge-active,
+.badge-shortlisted {
+    background: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid var(--success-border);
+}
+
+.badge-pending,
+.badge-applied {
+    background: var(--warning-bg);
+    color: var(--warning-text);
+    border: 1px solid var(--warning-border);
+}
+
+.badge-closed,
+.badge-rejected {
+    background: var(--error-bg);
+    color: var(--error-text);
+    border: 1px solid var(--error-border);
+}
+
+.badge-hired {
+    background: var(--info-bg);
+    color: var(--info-text);
+    border: 1px solid var(--info-border);
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+    background: var(--bg-card-subtle);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Layouts
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+    .navbar {
+        padding: 0.85rem 1rem;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .form-row,
+    .role-selector {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar .user-badge {
+        max-height: 52px;
+        padding: 6px 10px;
+    }
+}
