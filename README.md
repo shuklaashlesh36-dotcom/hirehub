@@ -4,6 +4,8 @@ College project: a 3-role job portal (Admin, Employer, Job Seeker) using Java 17
 
 This repository currently includes Phases 0–2 (skeleton, JDBC, and OOP domain models). Authentication and web features come later.
 
+## Live Demo : https://hirehub-d0l0.onrender.com/
+
 ## Requirements
 
 - JDK 17
